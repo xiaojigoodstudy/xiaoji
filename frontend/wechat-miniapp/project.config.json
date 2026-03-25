@@ -1,0 +1,14 @@
+﻿{
+  "miniprogramRoot": "./",
+  "compileType": "miniprogram",
+  "setting": {
+    "es6": true,
+    "postcss": true,
+    "minified": true,
+    "enhance": true,
+    "urlCheck": false
+  },
+  "appid": "touristappid",
+  "projectname": "daily-toolkit-miniapp",
+  "description": "Personal daily toolkit miniapp"
+}

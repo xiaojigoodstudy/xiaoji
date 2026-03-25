@@ -1,0 +1,22 @@
+package com.xiaoji.toolkit.bootstrap.api;
+
+public class CreateHabitItemRequest {
+    private String name;
+    private Boolean enabled;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
+}

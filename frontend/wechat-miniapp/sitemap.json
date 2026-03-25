@@ -1,0 +1,9 @@
+﻿{
+  "desc": "Daily Toolkit Mini Program Sitemap",
+  "rules": [
+    {
+      "action": "allow",
+      "page": "*"
+    }
+  ]
+}

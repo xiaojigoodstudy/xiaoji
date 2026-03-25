@@ -1,0 +1,8 @@
+﻿<view class="page">
+  <view class="card">
+    <view class="title">Daily Toolkit</view>
+    <view class="desc">微信小程序骨架已初始化，可在开发者工具直接打开。</view>
+    <button class="btn" bindtap="onTapHealth">健康检查示例</button>
+    <view class="result">{{result}}</view>
+  </view>
+</view>
