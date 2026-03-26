@@ -77,7 +77,12 @@
   - `infra/README.md` 补充双机部署说明
   - 已按当前环境固定示例内网地址（A: `10.1.4.12`；B: `10.1.0.9`）
 - 已完成容器构建兼容修复：
-  - `backend/app-bootstrap/Dockerfile` 构建阶段自动移除 `.mvn/maven.config` 中 Windows 专用 `--settings`，避免 Linux/Docker 下路径无效导致构建失败
+  - `scripts/deploy/prod-build.sh` 在 Maven 打包阶段临时移除 `.mvn/maven.config` 中 Windows 专用 `--settings`，构建结束后恢复
+- 已完成生产构建缓存优化：
+  - `scripts/deploy/prod-build.sh` 改为“先用 Maven 容器打包，再构建运行时镜像”
+  - 已接入 Maven 缓存卷 `xiaoji-maven-repo-cache`，减少重复依赖下载
+  - 兼容保留 `.mvn/maven.config` 的 Windows `--settings`（构建时临时移除，结束后恢复）
+  - `.dockerignore` 已放行 `backend/app-bootstrap/target/app-bootstrap-0.1.0-SNAPSHOT-exec.jar` 供运行时镜像打包
 - 已完成前端静态部署接入（当前阶段）：
   - `nginx` 已托管四个前端产物目录（`admin-web/admin-h5/official-h5/mobile-app`）
   - 新增 `scripts/deploy/prod-frontend-build.sh`（统一构建并同步前端 `dist`）

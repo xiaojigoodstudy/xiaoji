@@ -1,4 +1,6 @@
 **/target
+!backend/app-bootstrap/target/
+!backend/app-bootstrap/target/app-bootstrap-0.1.0-SNAPSHOT-exec.jar
 **/node_modules
 **/dist
 **/.idea

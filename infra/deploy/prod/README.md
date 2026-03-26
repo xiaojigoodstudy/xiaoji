@@ -34,6 +34,7 @@
   - Server A private IP is `10.1.4.12` (for firewall allow-list on Server B)
 3. From repo root, run `bash scripts/deploy/prod-frontend-build.sh`
 4. Run `bash scripts/deploy/prod-build.sh`
+  - this step will package backend by Maven container and reuse dependencies from docker volume `xiaoji-maven-repo-cache`
 5. Run `bash scripts/deploy/prod-up.sh`
 6. Check `curl http://10.1.4.12/api/health`
 

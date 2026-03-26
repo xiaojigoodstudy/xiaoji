@@ -4,6 +4,7 @@
 ## Deploy Scripts
 
 - `deploy/prod-build.sh`：构建后端生产镜像。
+  默认使用 `xiaoji-maven-repo-cache` 持久化 Maven 依赖缓存，避免重复下载。
 - `deploy/prod-frontend-build.sh`：构建前端并同步 `frontend-dist`。
 - `deploy/prod-up.sh`：启动生产编排（后台）。
 - `deploy/prod-down.sh`：停止生产编排。
