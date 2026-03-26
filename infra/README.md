@@ -15,3 +15,4 @@
 - `local/.env.example`：本地基础设施配置模板。
 
 > 当前部署方案默认外置 MySQL/Redis，ES/XXL-JOB/MQ 后续补充。
+> 推荐双机部署：应用服务（`backend + nginx`）与数据服务（`MySQL + Redis`）分离，应用侧通过内网地址连接数据侧。
