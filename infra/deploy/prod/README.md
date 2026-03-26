@@ -29,12 +29,13 @@
 
 1. `cp .env.example .env`
 2. Edit `.env`:
-  - set `MYSQL_URL` to Server B private IP (for example `10.0.0.12`)
-  - set `REDIS_HOST` to Server B private IP
+  - set `MYSQL_URL` to Server B private IP (`10.1.0.9`)
+  - set `REDIS_HOST` to Server B private IP (`10.1.0.9`)
+  - Server A private IP is `10.1.4.12` (for firewall allow-list on Server B)
 3. From repo root, run `bash scripts/deploy/prod-frontend-build.sh`
 4. Run `bash scripts/deploy/prod-build.sh`
 5. Run `bash scripts/deploy/prod-up.sh`
-6. Check `curl http://<server-a-ip>/api/health`
+6. Check `curl http://10.1.4.12/api/health`
 
 ## Capacity Notes
 

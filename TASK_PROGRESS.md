@@ -75,6 +75,7 @@
   - `infra/deploy/prod/.env.example` 默认改为“应用服务器 A 连接数据服务器 B（内网 IP）”
   - `infra/deploy/prod/README.md` 更新为双机部署建议（A: `4C4G3M40G`；B: `2C8G10M150G`）
   - `infra/README.md` 补充双机部署说明
+  - 已按当前环境固定示例内网地址（A: `10.1.4.12`；B: `10.1.0.9`）
 - 已完成前端静态部署接入（当前阶段）：
   - `nginx` 已托管四个前端产物目录（`admin-web/admin-h5/official-h5/mobile-app`）
   - 新增 `scripts/deploy/prod-frontend-build.sh`（统一构建并同步前端 `dist`）
