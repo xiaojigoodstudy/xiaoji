@@ -86,6 +86,9 @@
 - 已完成前端静态部署接入（当前阶段）：
   - `nginx` 已托管四个前端产物目录（`admin-web/admin-h5/official-h5/mobile-app`）
   - 新增 `scripts/deploy/prod-frontend-build.sh`（统一构建并同步前端 `dist`）
+- 已完成管理端 Web 首页改造：
+  - `frontend/admin-web-vue3/src/App.vue` 已由 Vite 默认页改为“业务入口 + 健康状态”页面
+  - `frontend/admin-web-vue3/src/style.css` 已替换为项目化样式（适配桌面与移动端）
 - 已完成移动端工程切换：
   - `frontend/mobile-app` 已从 Vue 壳替换为 uni-app 工程
   - 已新增 `dev:h5/dev:mp-weixin` 与 `build:h5/build:mp-weixin` 脚本
