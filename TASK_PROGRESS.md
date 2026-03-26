@@ -76,6 +76,8 @@
   - `infra/deploy/prod/README.md` 更新为双机部署建议（A: `4C4G3M40G`；B: `2C8G10M150G`）
   - `infra/README.md` 补充双机部署说明
   - 已按当前环境固定示例内网地址（A: `10.1.4.12`；B: `10.1.0.9`）
+- 已完成容器构建兼容修复：
+  - `backend/app-bootstrap/Dockerfile` 构建阶段自动移除 `.mvn/maven.config` 中 Windows 专用 `--settings`，避免 Linux/Docker 下路径无效导致构建失败
 - 已完成前端静态部署接入（当前阶段）：
   - `nginx` 已托管四个前端产物目录（`admin-web/admin-h5/official-h5/mobile-app`）
   - 新增 `scripts/deploy/prod-frontend-build.sh`（统一构建并同步前端 `dist`）

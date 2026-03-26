@@ -2,7 +2,8 @@ FROM maven:3.8.8-eclipse-temurin-8 AS builder
 WORKDIR /workspace
 
 COPY . .
-RUN mvn -q -DskipTests -pl backend/app-bootstrap -am package
+RUN if [ -f .mvn/maven.config ]; then sed -i '/^--settings /d' .mvn/maven.config; fi \
+    && mvn -q -DskipTests -pl backend/app-bootstrap -am package
 
 FROM eclipse-temurin:8-jre
 WORKDIR /app
