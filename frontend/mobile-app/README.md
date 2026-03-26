@@ -1,5 +1,16 @@
-# Vue 3 + TypeScript + Vite
+# mobile-app (uni-app)
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+统一移动端工程（uni-app + Vue3 + TypeScript）。
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## 命令
+
+- H5 开发：`npm run dev:h5`
+- 微信小程序开发：`npm run dev:mp-weixin`
+- H5 构建：`npm run build:h5`
+- 微信小程序构建：`npm run build:mp-weixin`
+
+## 目录
+
+- `src/pages.json`：页面与 tabBar 路由清单
+- `src/manifest.json`：应用基础清单
+- `src/pages/*`：业务页面

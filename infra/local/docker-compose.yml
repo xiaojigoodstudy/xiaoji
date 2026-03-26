@@ -1,0 +1,86 @@
+services:
+  mysql:
+    image: mysql:8.0.36
+    container_name: xiaoji-mysql8
+    restart: unless-stopped
+    ports:
+      - "${MYSQL_PORT:-3306}:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-Hrenji@123}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-xiaoji}
+      TZ: Asia/Shanghai
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_0900_ai_ci
+      - --default-time-zone=+08:00
+    volumes:
+      - ./volumes/mysql:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-p${MYSQL_ROOT_PASSWORD:-Hrenji@123}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks:
+      - xiaoji-local
+
+  redis:
+    image: redis:7.2-alpine
+    container_name: xiaoji-redis7
+    restart: unless-stopped
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    command:
+      - redis-server
+      - --appendonly
+      - "yes"
+      - --requirepass
+      - ${REDIS_PASSWORD:-Hrenji@123}
+    volumes:
+      - ./volumes/redis:/data
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli -a ${REDIS_PASSWORD:-Hrenji@123} ping | grep PONG"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks:
+      - xiaoji-local
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.13.4
+    container_name: xiaoji-es8
+    restart: unless-stopped
+    profiles: ["es"]
+    environment:
+      discovery.type: single-node
+      xpack.security.enabled: "false"
+      ES_JAVA_OPTS: ${ES_JAVA_OPTS:--Xms1g -Xmx1g}
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "${ES_PORT:-9200}:9200"
+    volumes:
+      - ./volumes/es:/usr/share/elasticsearch/data
+    networks:
+      - xiaoji-local
+
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: xiaoji-rabbitmq
+    restart: unless-stopped
+    profiles: ["mq"]
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER:-admin}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD:-admin123}
+    ports:
+      - "${RABBITMQ_PORT:-5672}:5672"
+      - "${RABBITMQ_MGMT_PORT:-15672}:15672"
+    volumes:
+      - ./volumes/rabbitmq:/var/lib/rabbitmq
+    networks:
+      - xiaoji-local
+
+networks:
+  xiaoji-local:
+    driver: bridge

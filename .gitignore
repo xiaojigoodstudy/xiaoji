@@ -17,3 +17,13 @@ pnpm-debug.log*
 .vscode/
 .DS_Store
 Thumbs.db
+
+# Claude Code
+.claude/
+
+# Deploy local env
+infra/deploy/prod/.env
+infra/deploy/prod/frontend-dist/*
+!infra/deploy/prod/frontend-dist/.gitkeep
+infra/local/.env
+infra/local/volumes/

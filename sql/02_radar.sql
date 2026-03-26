@@ -1,4 +1,4 @@
-USE daily_toolkit;
+USE xiaoji;
 
 CREATE TABLE IF NOT EXISTS radar_source (
   id BIGINT PRIMARY KEY,

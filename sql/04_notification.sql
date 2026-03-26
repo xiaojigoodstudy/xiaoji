@@ -1,4 +1,4 @@
-USE daily_toolkit;
+USE xiaoji;
 
 CREATE TABLE IF NOT EXISTS notification_task (
   id BIGINT PRIMARY KEY,

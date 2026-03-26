@@ -1,0 +1,48 @@
+services:
+  backend:
+    image: ${BACKEND_IMAGE:-xiaoji/backend:0.1.0}
+    build:
+      context: ../../..
+      dockerfile: backend/app-bootstrap/Dockerfile
+    container_name: xiaoji-backend
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      SPRING_PROFILES_ACTIVE: mysql
+      MYSQL_URL: ${MYSQL_URL}
+      MYSQL_USERNAME: ${MYSQL_USERNAME}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      REDIS_HOST: ${REDIS_HOST}
+      REDIS_PORT: ${REDIS_PORT}
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+      REDIS_DATABASE: ${REDIS_DATABASE}
+      JAVA_OPTS: ${JAVA_OPTS}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - xiaoji-net
+
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: xiaoji-nginx
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "${NGINX_HTTP_PORT:-80}:80"
+      - "${NGINX_ADMIN_H5_PORT:-8081}:8081"
+      - "${NGINX_OFFICIAL_H5_PORT:-8082}:8082"
+      - "${NGINX_MOBILE_APP_PORT:-8083}:8083"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./frontend-dist/admin-web:/usr/share/nginx/html/admin-web:ro
+      - ./frontend-dist/admin-h5:/usr/share/nginx/html/admin-h5:ro
+      - ./frontend-dist/official-h5:/usr/share/nginx/html/official-h5:ro
+      - ./frontend-dist/mobile-app:/usr/share/nginx/html/mobile-app:ro
+    networks:
+      - xiaoji-net
+
+networks:
+  xiaoji-net:
+    driver: bridge

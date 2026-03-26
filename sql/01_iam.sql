@@ -1,4 +1,4 @@
-USE daily_toolkit;
+USE xiaoji;
 
 CREATE TABLE IF NOT EXISTS iam_user (
   id BIGINT PRIMARY KEY,

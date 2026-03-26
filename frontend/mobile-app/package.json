@@ -4,19 +4,27 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "dev": "uni",
+    "dev:h5": "uni",
+    "dev:mp-weixin": "uni -p mp-weixin",
+    "build": "uni build",
+    "build:h5": "uni build -p h5",
+    "build:mp-weixin": "uni build -p mp-weixin"
   },
   "dependencies": {
-    "vue": "^3.5.30"
+    "@dcloudio/uni-app": "vue3",
+    "@dcloudio/uni-components": "vue3",
+    "@dcloudio/uni-h5": "vue3",
+    "@dcloudio/uni-mp-weixin": "vue3",
+    "vue": "3.4.21"
   },
   "devDependencies": {
+    "@dcloudio/types": "3.4.28",
+    "@dcloudio/vite-plugin-uni": "vue3",
     "@types/node": "^24.12.0",
-    "@vitejs/plugin-vue": "^6.0.5",
     "@vue/tsconfig": "^0.9.0",
+    "sass": "^1.89.2",
     "typescript": "~5.9.3",
-    "vite": "^8.0.1",
-    "vue-tsc": "^3.2.5"
+    "vite": "5.2.8"
   }
 }

@@ -6,9 +6,15 @@ spring:
     exclude: []
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/daily_toolkit?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&useSSL=false
-    username: root
-    password: 123456
+    url: ${MYSQL_URL:jdbc:mysql://42.194.225.228:3306/xiaoji?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&useSSL=false}
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:Hrenji@123}
+  redis:
+    host: ${REDIS_HOST:42.194.225.228}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD:Hrenji@123}
+    database: ${REDIS_DATABASE:0}
+    timeout: 3000ms
   flyway:
     enabled: true
     locations: classpath:db/migration

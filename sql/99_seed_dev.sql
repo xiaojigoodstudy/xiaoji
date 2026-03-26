@@ -1,4 +1,4 @@
-USE daily_toolkit;
+USE xiaoji;
 
 INSERT INTO iam_user (id, username, password_hash, display_name, status, created_at, updated_at, is_deleted)
 VALUES

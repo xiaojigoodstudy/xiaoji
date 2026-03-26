@@ -1,4 +1,4 @@
-USE daily_toolkit;
+USE xiaoji;
 
 CREATE TABLE IF NOT EXISTS habit_item (
   id BIGINT PRIMARY KEY,

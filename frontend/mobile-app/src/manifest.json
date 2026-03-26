@@ -1,0 +1,24 @@
+{
+  "name": "xiaoji-mobile",
+  "appid": "__UNI__XIAOJI",
+  "description": "xiaoji mobile app built with uni-app",
+  "versionName": "0.1.0",
+  "versionCode": "100",
+  "transformPx": false,
+  "app-plus": {
+    "usingComponents": true
+  },
+  "mp-weixin": {
+    "appid": "",
+    "setting": {
+      "urlCheck": false
+    },
+    "usingComponents": true
+  },
+  "h5": {
+    "title": "xiaoji",
+    "router": {
+      "mode": "hash"
+    }
+  }
+}

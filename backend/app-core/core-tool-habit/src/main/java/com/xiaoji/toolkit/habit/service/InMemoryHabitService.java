@@ -5,6 +5,7 @@ import com.xiaoji.toolkit.habit.model.HabitItem;
 import com.xiaoji.toolkit.habit.model.HabitStats;
 import com.xiaoji.toolkit.shared.constants.ResultCode;
 import com.xiaoji.toolkit.shared.exception.BizException;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -15,6 +16,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Service
+@Profile("!mysql")
 public class InMemoryHabitService implements HabitService {
 
     private final AtomicLong itemIdGen = new AtomicLong(8000L);

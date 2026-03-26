@@ -4,6 +4,7 @@ import com.xiaoji.toolkit.ruleengine.model.RuleDefinition;
 import com.xiaoji.toolkit.ruleengine.model.RuleEvaluateResult;
 import com.xiaoji.toolkit.shared.constants.ResultCode;
 import com.xiaoji.toolkit.shared.exception.BizException;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Service
+@Profile("!mysql")
 public class InMemoryRuleEngineService implements RuleEngineService {
 
     private final AtomicLong ruleIdGen = new AtomicLong(3000L);

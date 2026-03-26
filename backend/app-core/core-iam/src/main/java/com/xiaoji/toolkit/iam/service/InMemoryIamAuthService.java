@@ -4,6 +4,7 @@ import com.xiaoji.toolkit.iam.model.IamSession;
 import com.xiaoji.toolkit.iam.model.LoginResult;
 import com.xiaoji.toolkit.shared.constants.ResultCode;
 import com.xiaoji.toolkit.shared.exception.BizException;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -16,6 +17,7 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Service
+@Profile("!mysql")
 public class InMemoryIamAuthService implements IamAuthService {
 
     private static final long TOKEN_TTL_MILLIS = 12L * 60L * 60L * 1000L;

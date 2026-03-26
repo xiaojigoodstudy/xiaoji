@@ -4,6 +4,7 @@ import com.xiaoji.toolkit.notification.model.NotificationLog;
 import com.xiaoji.toolkit.notification.model.SendNotificationCommand;
 import com.xiaoji.toolkit.shared.constants.ResultCode;
 import com.xiaoji.toolkit.shared.exception.BizException;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Service
+@Profile("!mysql")
 public class InMemoryNotificationService implements NotificationService {
 
     private final AtomicLong logIdGen = new AtomicLong(5000L);
