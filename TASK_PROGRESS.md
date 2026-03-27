@@ -6,6 +6,7 @@
 - 已完成架构文档基线：`docs/architecture/00~13`。
 - 已完成仓库骨架目录：`backend/`、`frontend/`、`infra/`、`scripts/`。
 - 已新增代码托管建议文档：`docs/architecture/13-code-hosting.md`。
+- 已新增生产部署手册：`docs/architecture/14-prod-deploy-runbook.md`（含首次部署、后续更新、问题复盘）。
 - 已完成后端 Maven 多模块结构：
   - `app-bootstrap`
   - `app-gateway`
@@ -89,6 +90,10 @@
 - 已完成管理端 Web 首页改造：
   - `frontend/admin-web-vue3/src/App.vue` 已由 Vite 默认页改为“业务入口 + 健康状态”页面
   - `frontend/admin-web-vue3/src/style.css` 已替换为项目化样式（适配桌面与移动端）
+- 已完成管理端交互原型（admin-web）：
+  - 左侧菜单：仪表盘、雷达、规则、通知、习惯、主链路、系统
+  - 已接入原型级交互（登录、列表增改、规则评估、通知发送、习惯打卡、主链路触发）
+  - 健康检查仍直连 `/api/health`，其余模块当前为前端原型数据流
 - 已完成移动端工程切换：
   - `frontend/mobile-app` 已从 Vue 壳替换为 uni-app 工程
   - 已新增 `dev:h5/dev:mp-weixin` 与 `build:h5/build:mp-weixin` 脚本
