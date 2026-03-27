@@ -5,6 +5,7 @@
 - Included: `backend + nginx`
 - Included frontend static hosting via nginx:
   - `admin-web` on `:80`
+  - `admin-web` TLS on `:443` (for `xiaoji.work` / `www.xiaoji.work`)
   - `admin-h5` on `:8081`
   - `official-h5` on `:8082`
   - `mobile-app` on `:8083`
@@ -16,6 +17,7 @@
 - `docker-compose.yml`: runtime orchestration
 - `.env.example`: environment template
 - `nginx/default.conf`: reverse proxy config
+- `nginx/certs/`: SSL cert directory (mounted to `/etc/nginx/certs`)
 
 ## Recommended Topology (Two Servers)
 
@@ -37,6 +39,17 @@
   - this step will package backend by Maven container and reuse dependencies from docker volume `xiaoji-maven-repo-cache`
 5. Run `bash scripts/deploy/prod-up.sh`
 6. Check `curl http://10.1.4.12/api/health`
+
+## HTTPS for Domain
+
+1. Put cert files on server A:
+  - `infra/deploy/prod/nginx/certs/xiaoji.work_bundle.pem`
+  - `infra/deploy/prod/nginx/certs/xiaoji.work.key`
+2. Start or reload nginx:
+  - `docker compose --env-file infra/deploy/prod/.env -f infra/deploy/prod/docker-compose.yml up -d nginx`
+3. Verify:
+  - `curl -I https://www.xiaoji.work/`
+  - `curl -I https://www.xiaoji.work/api/health`
 
 ## Capacity Notes
 

@@ -1,4 +1,4 @@
-﻿# TASK PROGRESS
+# TASK PROGRESS
 
 最后更新：2026-03-26
 
@@ -77,6 +77,7 @@
   - `infra/deploy/prod/README.md` 更新为双机部署建议（A: `4C4G3M40G`；B: `2C8G10M150G`）
   - `infra/README.md` 补充双机部署说明
   - 已按当前环境固定示例内网地址（A: `10.1.4.12`；B: `10.1.0.9`）
+  - 已同步域名 HTTPS 配置（`xiaoji.work`/`www.xiaoji.work`）：nginx 增加 `443` 端口映射、证书目录挂载与 80->443 跳转
 - 已完成容器构建兼容修复：
   - `scripts/deploy/prod-build.sh` 在 Maven 打包阶段临时移除 `.mvn/maven.config` 中 Windows 专用 `--settings`，构建结束后恢复
 - 已完成生产构建缓存优化：
